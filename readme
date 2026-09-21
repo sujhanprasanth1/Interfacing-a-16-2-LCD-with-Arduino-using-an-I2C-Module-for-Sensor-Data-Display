@@ -49,7 +49,88 @@ To interface a **16×2 LCD display with Arduino using an I2C module** and displa
 
 ## Arduino Program
 
+#include <Wire.h>
+
+#include <LiquidCrystal_I2C.h>
+
+
+LiquidCrystal_I2C lcd(0x27, 16, 2); // I2C address 0x27, 16x2 LCD
+
+
+int sensorPin = A0;
+
+float sensorValue;
+
+float temperature;
+
+
+
+void setup() {
+
+  lcd.init();           // Initialize LCD
+
+  lcd.backlight();      // Turn on backlight
+
+}
+
+
+
+void loop() {
+
+  sensorValue = analogRead(sensorPin);       // Read sensor value
+
+  temperature = (sensorValue * 5.0 * 100.0) / 1023.0; // Convert to °C (for LM35)
+
+
+
+  lcd.clear();
+
+  lcd.setCursor(0, 0);
+
+  lcd.print("Temp: ");
+
+  lcd.print(temperature);
+
+  lcd.print(" C");
+
+
+
+  delay(1000);
+
+}
+
+
+## PIN DIAGRAM:
+          +-----------------------------+
+          |         Arduino UNO         |
+          |                             |
+          |   [5V] -----> LCD VCC       |
+          |   [GND] ----> LCD GND       |
+          |   [A4] -----> LCD SDA       |
+          |   [A5] -----> LCD SCL       |
+          |                             |
+          |   [A0] <----- Sensor Output |
+          |   [5V] -----> Sensor VCC    |
+          |   [GND] ----> Sensor GND    |
+          +-----------------------------+
+
+          LCD (16x2 with I2C backpack)
+          -----------------------------
+          | VCC | GND | SDA | SCL |
+          -----------------------------
+
+          Sensor (e.g., LM35)
+          -----------------------------
+          | VCC | OUT | GND |
+          -----------------------------
+
+
+
 ## Observation
+
+
+
+
 
 ## Result
 
