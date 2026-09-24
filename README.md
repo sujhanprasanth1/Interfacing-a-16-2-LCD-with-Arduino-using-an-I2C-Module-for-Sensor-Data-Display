@@ -72,6 +72,9 @@ To interface a **16×2 LCD display with Arduino using an I2C module** and displa
 
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/31de352b-34f3-4d2b-8efa-dd3fd7e972c0" />
 
+<img width="1280" height="964" alt="image" src="https://github.com/user-attachments/assets/c097f9f1-d5e2-476e-828b-c2a3003ea4cc" />
+
+
 
 
 ## Result
